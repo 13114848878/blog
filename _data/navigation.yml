@@ -1,8 +1,8 @@
 - name: home
   link: /blog/
 - name: about
-  link: /about.html
+  link: /blog/about.html
 - name: blog
-  link: /blog.html
+  link: /blog/blog.html
 - name: staff
-  link: /staff.html
+  link: /blog/staff.html
