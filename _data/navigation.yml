@@ -1,5 +1,5 @@
 - name: home
-  link: /
+  link: /blog/
 - name: about
   link: /about.html
 - name: blog
