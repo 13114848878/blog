@@ -1,4 +1,4 @@
-# baseurl: blog/
+baseurl: /blog
 collections:
   authors:
     output: true
