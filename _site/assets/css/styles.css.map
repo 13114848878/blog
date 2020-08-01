@@ -4,7 +4,7 @@
 	"sources": [
 		"styles.scss",
 		"_sass/main.scss",
-		"_sass/syntax.css"
+		"_sass/syntax.scss"
 	],
 	"sourcesContent": [
 		"@import \"main\";\n// @import \"monokai\";\n@import \"syntax\";",
