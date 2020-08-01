@@ -19,3 +19,20 @@ defaults:
       path: ""
     values:
       layout: "default"
+
+# markdown highlight
+markdown: kramdown
+# highlighter: rouge
+
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  # html_to_native: true
+  # extensions: ["tables"]
+
+## Mathjax
+mathjax:  true
+mathjax_autoNumber: true
+# markdown: redcarpet
+# redcarpet:
+#   extensions: ["tables"]
