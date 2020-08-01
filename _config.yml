@@ -1,7 +1,5 @@
 baseurl: /blog
 
-# remote-theme: mmistakes/minimal-mistakes
-
 collections:
   authors:
     output: true

@@ -1,5 +1,40 @@
-<nav>
-  {% for item in site.data.navigation %}
-    <a href="{{ item.link }}" {% if page.url == item.link %}class="current"{% endif %}>{{ item.name }}</a>
-  {% endfor %}
+{% comment %} <nav> {% endcomment %}
+{% comment %} {{page}} {% endcomment %}
+  {% comment %} {% for item in site.data.navigation %}
+  
+    <a href="{{site.baseurl}}{{ item.link }}" {% if page.url == item.link %}class="current"{% endif %}>{{ item.name }}</a>
+  {% endfor %} {% endcomment %}
+{% comment %} </nav> {% endcomment %}
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="{{site.baseurl}}/">
+    <img src="{{site.baseurl}}/assets/images/logo1.png" width="40" height="40" class="align-center" alt="logo">
+    我的博客
+  </a>
+  
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      {% for item in site.data.navigation %}
+        <li class="nav-item">
+          <a class="nav-link" href="{{site.baseurl}}{{ item.link }}" >
+          {{item.name}} {% if page.url == item.link %}<span class="sr-only">(current)</span>{% endif %}</a>
+        </li>
+      {% endfor %}
+
+      {% comment %} <li class="nav-item">
+        <a class="nav-link" href="#">文章列表 <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Django</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Python</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href='#'>资源站</a> {% endcomment %}
+      {% comment %} </li> {% endcomment %}
+    </ul>
+  </div>
+
 </nav>

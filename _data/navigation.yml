@@ -1,8 +1,10 @@
-- name: home
-  link: /blog/
-- name: about
-  link: /blog/about.html
-- name: blog
-  link: /blog/blog.html
-- name: staff
-  link: /blog/staff.html
+# - name: 主页
+#   link: /
+- name: 博客
+  link: /blog.html
+- name: 关于
+  link: /about.html
+- name: 资源站
+  link: /source.html
+# - name: staff
+#   link: /staff.html

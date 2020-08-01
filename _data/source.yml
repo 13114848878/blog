@@ -1,0 +1,12 @@
+- name: Bootstrap
+  link: https://getbootstrap.com/
+  introduction: Bootstrap is an open source toolkit for developing with HTML, CSS, and JS.
+  logo: true
+- name: Fontawesome
+  link: https://fontawesome.com/
+  introduction: Get vector icons and social logos on your website with Font Awesome.
+  logo: true
+- name: Django
+  link: https://www.djangoproject.com
+  introduction: Django makes it easier to build better Web apps more quickly and with less code.
+  logo: false

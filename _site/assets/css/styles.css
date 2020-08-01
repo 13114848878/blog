@@ -1,3 +1,11 @@
 .current { color: #08c777; }
 
+#Bootstrap { background-color: #563D7C; }
+
+#Fontawesome { background-color: #1971C2; }
+
+#Django { background-color: #0C4B33; }
+
+.badge.text-center.text-white { font-size: 50px; margin-bottom: 1.5rem; }
+
 /*# sourceMappingURL=styles.css.map */

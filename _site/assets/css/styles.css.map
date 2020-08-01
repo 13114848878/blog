@@ -7,8 +7,8 @@
 	],
 	"sourcesContent": [
 		"@import \"main\";",
-		".current {\r\n    color: rgb(8, 199, 119);\r\n  }"
+		".current {\r\n    color: rgb(8, 199, 119);\r\n  }\r\n\r\n#Bootstrap {\r\n  background-color: #563D7C;\r\n}\r\n\r\n#Fontawesome{\r\n  background-color: #1971C2;\r\n}\r\n\r\n#Django{\r\n  background-color: #0C4B33;\r\n}\r\n\r\n// .card-header.text-white.Django{\r\n//   background-color: #0C4B33;\r\n// } \r\n.badge.text-center.text-white {\r\n  font-size: 50px;\r\n  margin-bottom: 1.5rem;\r\n}\r\n// .Django{\r\n//   background-color: #0C4B33;\r\n// }"
 	],
 	"names": [],
-	"mappings": "ACAA,AAAA,QAAQ,CAAC,EACL,KAAK,EAAE,OAAgB,GACxB"
+	"mappings": "ACAA,AAAA,QAAQ,CAAC,EACL,KAAK,EAAE,OAAgB,GACxB;;AAEH,AAAA,UAAU,CAAC,EACT,gBAAgB,EAAE,OAAO,GAC1B;;AAED,AAAA,YAAY,CAAA,EACV,gBAAgB,EAAE,OAAO,GAC1B;;AAED,AAAA,OAAO,CAAA,EACL,gBAAgB,EAAE,OAAO,GAC1B;;AAKD,AAAA,MAAM,AAAA,YAAY,AAAA,WAAW,CAAC,EAC5B,SAAS,EAAE,IAAI,EACf,aAAa,EAAE,MAAM,GACtB"
 }
