@@ -1,4 +1,4 @@
-I")<h1 id="欢迎使用马克飞象">欢迎使用马克飞象</h1>
+I"�)<h1 id="欢迎使用马克飞象">欢迎使用马克飞象</h1>
 
 <table>
   <tbody>
@@ -6,6 +6,16 @@
       <td>@(示例笔记本)[马克飞象</td>
       <td>帮助</td>
       <td>Markdown]</td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <tbody>
+    <tr>
+      <td>马克飞象</td>
+      <td>帮助</td>
+      <td>Markdown</td>
     </tr>
   </tbody>
 </table>
@@ -49,14 +59,16 @@
 \[x = \dfrac{-b \pm \sqrt{b^2 - 4ac}}{2a}\]
 
 <h3 id="表格">表格</h3>
+<hr />
 <p>| Item      |    Value | Qty  |
 | :——– | ——–:| :–: |
 | Computer  | 1600 USD |  5   |
 | Phone     |   12 USD |  12  |
-| Pipe      |    1 USD | 234  |</p>
+| Pipe      |    1 USD | 234  |
+—</p>
 
 <h3 id="流程图">流程图</h3>
-<pre><code class="language-flow">st=&gt;start: Start
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>st=&gt;start: Start
 e=&gt;end
 op=&gt;operation: My Operation
 cond=&gt;condition: Yes or No?
@@ -64,7 +76,7 @@ cond=&gt;condition: Yes or No?
 st-&gt;op-&gt;cond
 cond(yes)-&gt;e
 cond(no)-&gt;op
-</code></pre>
+</code></pre></div></div>
 <p>graph TB
 Characters–&gt;Token
 Token–&gt;Nodes

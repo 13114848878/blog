@@ -24,3 +24,27 @@
 // .Django{
 //   background-color: #0C4B33;
 // }
+
+// 针对markdown表格渲染没有网格线进行一下修改
+table{
+  // border-left:0.5px solid #c6cbd1;
+  // border-top:0.5px solid #c6cbd1;
+  // width: 100%;
+  border: 1px solid #dfe2e5;
+  word-wrap:break-word; 
+  word-break:break-all;
+  margin-left: 5px;
+}
+// table th{
+//   text-align:center;
+// }
+table th,td{
+  // border-right:0.5px solid #c6cbd1;
+  // border-bottom:0.5px solid #c6cbd1;
+  padding: 6px 13px;
+  border: 1px solid #dfe2e5;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f6f8fa;
+}

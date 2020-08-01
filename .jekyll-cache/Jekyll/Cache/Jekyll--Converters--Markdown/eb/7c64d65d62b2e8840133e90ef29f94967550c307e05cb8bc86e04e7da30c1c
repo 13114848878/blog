@@ -1,83 +1,4 @@
-
-<!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>First</title>
-    <link rel="shortcut icon" href="/blog/assets/images/logo1.ico">
-    <link rel="stylesheet" href="/blog/assets/css/styles.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-    </script>
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-    </script>
-
-     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-    </script>
-
-    <script src="https://kit.fontawesome.com/3200007a33.js" crossorigin="anonymous"></script>
-
-    
-    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-          inlineMath: [['$','$']]
-        }
-      });
-    </script>
-  </head>
-  <body>
-  
-
-  
-
-
-
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="/blog/">
-    <img src="/blog/assets/images/logo1.png" width="40" height="40" class="align-center" alt="logo">
-    我的博客
-  </a>
-  
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-      
-        <li class="nav-item">
-          <a class="nav-link" href="/blog/blog.html" >
-          博客 </a>
-        </li>
-      
-        <li class="nav-item">
-          <a class="nav-link" href="/blog/about.html" >
-          关于 </a>
-        </li>
-      
-        <li class="nav-item">
-          <a class="nav-link" href="/blog/source.html" >
-          资源站 </a>
-        </li>
-      
-
-      
-      
-    </ul>
-  </div>
-
-</nav>
-   <div>
-  <h1>First</h1>
-
-  <p>
-    21 Jul 2020
-    
-    
-  </p>
-
-  <h1 id="欢迎使用马克飞象">欢迎使用马克飞象</h1>
+I"\)<h1 id="欢迎使用马克飞象">欢迎使用马克飞象</h1>
 
 <p>@(示例笔记本)[马克飞象|帮助|Markdown]
 <!-- 
@@ -124,54 +45,11 @@
 \[x = \dfrac{-b \pm \sqrt{b^2 - 4ac}}{2a}\]
 
 <h3 id="表格">表格</h3>
-<p><strong>表格必须换行重新开始写，否则渲染会处问题</strong>
-| Item      |    Value | Qty  |
+<p>| Item      |    Value | Qty  |
 | :——– | ——–:| :–: |
 | Computer  | 1600 USD |  5   |
 | Phone     |   12 USD |  12  |
 | Pipe      |    1 USD | 234  |</p>
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: left">Item</th>
-      <th style="text-align: right">Value</th>
-      <th style="text-align: center">Qty</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: left">Computer</td>
-      <td style="text-align: right">1600 USD</td>
-      <td style="text-align: center">5</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">Phone</td>
-      <td style="text-align: right">12 USD</td>
-      <td style="text-align: center">12</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">Pipe</td>
-      <td style="text-align: right">1 USD</td>
-      <td style="text-align: center">234</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">Computer</td>
-      <td style="text-align: right">1600 USD</td>
-      <td style="text-align: center">5</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">Phone</td>
-      <td style="text-align: right">12 USD</td>
-      <td style="text-align: center">12</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">Pipe</td>
-      <td style="text-align: right">1 USD</td>
-      <td style="text-align: center">234</td>
-    </tr>
-  </tbody>
-</table>
 
 <h3 id="流程图">流程图</h3>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>st=&gt;start: Start
@@ -280,16 +158,4 @@ Bob--&gt;Alice: I am good thanks!
     </li>
   </ol>
 </div>
-
-
-</div>
-   <div>
-    <br><br><br>
-</div>
-<footer class="py-3 bg-dark fixed-bottom">
-    <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; 2020 Wakes</p>
-    </div>
-</footer>
-  </body>
-</html>
+:ET

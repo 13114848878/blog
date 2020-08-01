@@ -8,6 +8,12 @@
 
 .badge.text-center.text-white { font-size: 50px; margin-bottom: 1.5rem; }
 
+table { border: 1px solid #dfe2e5; word-wrap: break-word; word-break: break-all; margin-left: 5px; }
+
+table th, td { padding: 6px 13px; border: 1px solid #dfe2e5; }
+
+table tr:nth-child(2n) { background-color: #f6f8fa; }
+
 .highlight table td { padding: 5px; }
 
 .highlight table pre { margin: 0; }
