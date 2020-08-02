@@ -17,13 +17,14 @@ layout: default
         </p> {% endcomment %}
 
         {{ content  }}
+
     </div>
 
     {% comment %} TOC {% endcomment %}
     <div class="col-2" >
       <nav class="navbar sticky-top" id="toc">
-        {%toc%}
-        
+        {% comment %} {%toc%} {% endcomment %}
+        {% include toc.html html=content %}
         <a href="#top" class="back-to-top">
           <img class="svg" src="{{site.baseurl}}/assets/images/back-to-top.svg" width="50" class="card-img-top" alt="..." >
         </a>
