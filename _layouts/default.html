@@ -31,8 +31,11 @@
     </script>
   </head>
   <body>
-  {% include navigation.html %}
-   {{content}}
-   {% include footer.html %}
+  {% comment %} <div class="container-fluid"> {% endcomment %}
+    {% include navigation.html %}
+    {{content}}
+    {% include footer.html %}
+   {% comment %} </div> {% endcomment %}
   </body>
+  
 </html>

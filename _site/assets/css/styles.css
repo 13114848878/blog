@@ -1,18 +1,22 @@
-.current { color: #08c777; }
+html { height: 100%; }
 
-#Bootstrap { background-color: #563D7C; }
+body { position: relative; min-height: 100%; }
 
-#Fontawesome { background-color: #1971C2; }
+footer { position: absolute; bottom: 0; width: 100%; }
 
-#Django { background-color: #0C4B33; }
+#post { margin-top: 2em; }
 
-.badge.text-center.text-white { font-size: 50px; margin-bottom: 1.5rem; }
+.highlight { padding-left: 5px; }
 
 table { border: 1px solid #dfe2e5; word-wrap: break-word; word-break: break-all; margin-left: 5px; }
 
 table th, td { padding: 6px 13px; border: 1px solid #dfe2e5; }
 
 table tr:nth-child(2n) { background-color: #f6f8fa; }
+
+#toc { padding: 0em; }
+
+.back-to-top { padding-left: 5rem; }
 
 .highlight table td { padding: 5px; }
 
@@ -139,5 +143,17 @@ table tr:nth-child(2n) { background-color: #f6f8fa; }
 .highlight .kp { color: #f92672; }
 
 .highlight .o { color: #f92672; }
+
+.current { color: #08c777; }
+
+#Bootstrap { background-color: #563D7C; }
+
+#Fontawesome { background-color: #1971C2; }
+
+#Django { background-color: #0C4B33; }
+
+.badge.text-center.text-white { font-size: 50px; margin-bottom: 1.5rem; }
+
+#Iconfont { background-color: #E94618; }
 
 /*# sourceMappingURL=styles.css.map */

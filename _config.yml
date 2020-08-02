@@ -15,6 +15,7 @@ defaults:
       type: "posts"
     values:
       layout: "post"
+      toc: true
   - scope:
       path: ""
     values:
@@ -28,11 +29,11 @@ kramdown:
   # input: GFM
   syntax_highlighter: rouge
   # html_to_native: true
-  # extensions: ["tables"]
 
 ## Mathjax
 mathjax:  true
 mathjax_autoNumber: true
-# markdown: redcarpet
-# redcarpet:
-#   extensions: ["tables"]
+
+#
+plugins:
+  - jekyll-toc

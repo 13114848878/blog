@@ -1,108 +1,38 @@
 ---
 layout: default
+title: ???
 ---
 
 <div class="container-fluid mt-2">
-	<div class="raw">
-		<div class="col">
-			
-			<div class="card-deck">
-                {% for item in site.data.source %}
-                    <div class="card text-center">
-                        <div class="card-header text-white" id="{{item.name}}">
-                            {{item.name}}
-                        </div>
+	<div class="row row-cols-1 row-cols-md-2">
+		{% for item in site.data.source %}
+			<div class="col mb-2">
+				<div class="card text-center h-100 w-100">
+					<div class="card-header text-white" id="{{item.name}}">
+						{{item.name}}
+					</div>
 
-                        <div class="card-body" >
-                            {% if item.logo %}
-                                <img class="svg" src="{{site.baseurl}}/assets/images/{{item.name}}.svg" width="100" class="card-img-top" alt="..." >
-                            {% else %}
-                                <span class="badge text-center text-white" id="{{item.name}}">{{item.name}}</span>
-                            {% endif %}
-                            
-                            <p class="card-text text-down">
-                                <strong>
-                                    {{item.introduction}}
-                                </strong>
-                            </p>
-                        </div>
+					<div class="card-body" >
+						{% if item.logo %}
+							<img class="svg" src="{{site.baseurl}}/assets/images/{{item.name}}.svg" width="100" class="card-img-top" alt="..." >
+						{% else %}
+							<span class="badge text-center text-white" id="{{item.name}}">{{item.name}}</span>
+						{% endif %}
+						
+						<p class="card-text text-down">
+							<strong>
+								{{item.introduction}}
+							</strong>
+						</p>
+					</div>
 
-                        <div class="card-footer">
-                            <a href="{{item.link}}" class="btn btn-primary">传送</a>
-                        </div>
-                    
-			        </div>
-                
-                {% endfor %}
-
-			{% comment %} <div class="card text-center">
-				<div class="card-header text-white" style="background-color: #563D7C;">
-					Bootstrap
+					<div class="card-footer">
+						<a href="{{item.link}}" class="btn btn-primary">??</a>
+					</div>
+				
 				</div>
-
-				<div class="card-body" >
-				  	
-
-				    <p class="card-text">
-					    <strong>
-					    	Bootstrap is an open source toolkit for developing with HTML, CSS, and JS.
-					    </strong>
-					</p>
-				</div>
-
-				<div class="card-footer">
-
-					<a href="https://getbootstrap.com/" class="btn btn-primary">传送</a>
-				</div>
-			  
-			</div> {% endcomment %}
-{% comment %} 		
-
-			<div class="card text-center">
-		    	<div class="card-header text-white" style="background-color: #1971C2;">
-					 Fontawesome
-				</div>
-
-		  		<div class="card-body">
-				  	<i class="fab fa-font-awesome fa-5x" style="color: #1971C2"></i>
-				    <p class="card-text">
-					    <strong>
-					    	Get vector icons and social logos on your website with Font Awesome, the web's most popular icon set and toolkit.
-					    </strong>
-					</p>
-				</div>
-
-				<div class="card-footer">
-					<a href="https://fontawesome.com/" class="btn btn-primary">传送</a>
-				</div>
-			  
-			</div> {% endcomment %}
-
-
-			{% comment %} <div class="card text-center">
-				<div class="card-header text-white" style="background-color: #0C4B33;">
-					Django
-				</div>
-			  	<div class="card-body">
-				  	<span class="badge text-center" style="color:white; background-color: #0C4B33; font-size:48px;">Django</span>
-
-				    <p class="card-text">
-				    	<br>
-					    <strong>
-					    	Django makes it easier to build better Web apps more quickly and with less code.
-					    </strong>
-					</p>
-				</div>
-
-				<div class="card-footer">
-					<a href="https://www.djangoproject.com" class="btn btn-primary">传送</a>
-				</div>
-			</div> {% endcomment %}
-
 			</div>
-		</div>
-
-
+		{% endfor %}
 	</div>
 	
 

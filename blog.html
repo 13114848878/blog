@@ -1,14 +1,23 @@
 ---
 layout: default
-title: 博客
+title: blog
 ---
-<h1>Latest Posts</h1>
+<div class="container-fluid" id="blog">
+  <div class="row" >
+  {% comment %} 8???????2? {% endcomment %}
+    <div class="col-8 offset-2">
+      <h1>Latest Posts</h1>
+      <ul>
+        {% for post in site.posts %}
+          <li>
+            <h2><a href="{{site.baseurl}}{{ post.url }}">{{ post.date | date_to_long_string }}</a></h2>
+            <p>{{ post.excerpt }}</p>
+            {% comment %} <p>{{ post | sample }}</p> {% endcomment %}
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
 
-<ul>
-  {% for post in site.posts %}
-    <li>
-      <h2><a href="{{site.baseurl}}{{ post.url }}">{{ post.title }}</a></h2>
-      <p>{{ post.excerpt }}</p>
-    </li>
-  {% endfor %}
-</ul>
+

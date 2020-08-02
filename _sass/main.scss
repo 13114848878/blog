@@ -1,29 +1,37 @@
-.current {
-    color: rgb(8, 199, 119);
-  }
 
-#Bootstrap {
-  background-color: #563D7C;
-}
-
-#Fontawesome{
-  background-color: #1971C2;
-}
-
-#Django{
-  background-color: #0C4B33;
-}
-
-// .card-header.text-white.Django{
-//   background-color: #0C4B33;
-// } 
-.badge.text-center.text-white {
-  font-size: 50px;
-  margin-bottom: 1.5rem;
-}
-// .Django{
-//   background-color: #0C4B33;
+// html,body { 
+//   // 顶部导航固定时，防止遮挡下面的元素
+//   // padding-top: 70px; 
+//   height:100%;
 // }
+
+// 让footer一直保持在底部
+html{
+  height: 100%;
+}
+body{
+  position:relative;
+  min-height: 100%;
+}
+
+footer{
+  position:absolute;
+  bottom:0;
+  width:100%;
+  // height:100px;
+}
+
+
+// post.html
+
+#post{
+  margin-top: 2em;
+}
+
+// 代码块不要紧贴左侧
+.highlight{
+  padding-left: 5px;
+}
 
 // 针对markdown表格渲染没有网格线进行一下修改
 table{
@@ -47,4 +55,13 @@ table th,td{
 
 table tr:nth-child(2n) {
   background-color: #f6f8fa;
+}
+
+#toc{
+  padding: 0em;
+  // padding-top: 70px; // 防止导航栏遮挡
+}
+
+.back-to-top{
+  padding-left: 5rem;
 }

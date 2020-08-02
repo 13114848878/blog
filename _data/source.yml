@@ -10,3 +10,7 @@
   link: https://www.djangoproject.com
   introduction: Django makes it easier to build better Web apps more quickly and with less code.
   logo: false
+- name: Iconfont
+  link: https://www.iconfont.cn/
+  introduction: 阿里妈妈MUX倾力打造的矢量图标管理、交流平台。
+  logo: true

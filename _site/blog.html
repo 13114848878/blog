@@ -3,7 +3,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>博客</title>
+    <title>blog</title>
     <link rel="shortcut icon" href="/blog/assets/images/logo1.ico">
     <link rel="stylesheet" href="/blog/assets/css/styles.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -32,12 +32,13 @@
   </head>
   <body>
   
+    
 
   
 
 
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="top">
   <a class="navbar-brand" href="/blog/">
     <img src="/blog/assets/images/logo1.png" width="40" height="40" class="align-center" alt="logo">
     我的博客
@@ -68,24 +69,52 @@
   </div>
 
 </nav>
-   <h1>Latest Posts</h1>
-
-<ul>
+    <div class="container-fluid" id="blog">
+  <div class="row" >
   
-    <li>
-      <h2><a href="/blog/2020/07/21/first.html">First</a></h2>
-      <p><h1 id="欢迎使用马克飞象">欢迎使用马克飞象</h1>
+    <div class="col-8 offset-2">
+      <h1>Latest Posts</h1>
+      <ul>
+        
+          <li>
+            <h2><a href="/blog/2020/08/02/tip.html">02 August 2020</a></h2>
+            <p><h3 id="jekyll使用技巧">Jekyll使用技巧</h3>
 </p>
-    </li>
-  
-</ul>
-   <div>
+            
+          </li>
+        
+          <li>
+            <h2><a href="/blog/2020/08/02/test.html">02 August 2020</a></h2>
+            <p><h3 id="测试文章">测试文章</h3>
+<p>文章内容较短时，页面是否正常。</p>
+</p>
+            
+          </li>
+        
+          <li>
+            <h2><a href="/blog/2020/07/21/first.html">21 July 2020</a></h2>
+            <p>
+<h1 id="欢迎使用马克飞象">欢迎使用马克飞象</h1>
+</p>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+
+    <div>
     <br><br><br>
 </div>
-<footer class="py-3 bg-dark fixed-bottom">
+<footer class="py-3 bg-dark">
     <div class="container">
         <p class="m-0 text-center text-white">Copyright &copy; 2020 Wakes</p>
     </div>
 </footer>
+   
   </body>
+  
 </html>

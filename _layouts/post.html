@@ -2,17 +2,34 @@
 layout: default
 ---
 
-<div>
-  <h1>{{ page.title }}</h1>
+<div class="container-fluid mr-2" id="post">
+  <div class="row" >
+      {% comment %} 8列宽，向右移动2列 {% endcomment %}
+      <div class="col-8 offset-2">
+        {% comment %} <h1>{{ page.title }}</h1>
 
-  <p>
-    {{ page.date | date_to_string }}
-    {% assign author = site.authors | where: 'short_name', page.author | first %}
-    {% if author %}
-      - <a href="{{ author.url }}">{{ author.name }}</a>
-    {% endif %}
-  </p>
+        <p>
+          {{ page.date | date_to_string }}
+            {% assign author = site.authors | where: 'short_name', page.author | first %}
+            {% if author %}
+              - <a href="{{ author.url }}">{{ author.name }}</a>
+            {% endif %}
+        </p> {% endcomment %}
 
-  {{ content  }}
+        {{ content  }}
+    </div>
 
+    {% comment %} TOC {% endcomment %}
+    <div class="col-2" >
+      <nav class="navbar sticky-top" id="toc">
+        {{ content | toc_only }}
+        
+        <a href="#top" class="back-to-top">
+          <img class="svg" src="{{site.baseurl}}/assets/images/back-to-top.svg" width="50" class="card-img-top" alt="..." >
+        </a>
+      </nav>
+      
+    </div>
+
+  </div>
 </div>

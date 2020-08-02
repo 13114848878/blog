@@ -32,12 +32,13 @@
   </head>
   <body>
   
+    
 
   
 
 
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="top">
   <a class="navbar-brand" href="/blog/">
     <img src="/blog/assets/images/logo1.png" width="40" height="40" class="align-center" alt="logo">
     我的博客
@@ -68,7 +69,7 @@
   </div>
 
 </nav>
-   <div>
+    <div>
 <p> hello world </p>
 <figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">show</span>
 <span class="vi">@widget</span> <span class="o">=</span> <span class="no">Widget</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="ss">:id</span><span class="p">])</span>
@@ -77,15 +78,16 @@
     <span class="nb">format</span><span class="p">.</span><span class="nf">json</span> <span class="p">{</span> <span class="n">render</span> <span class="ss">json: </span><span class="vi">@widget</span> <span class="p">}</span>
 <span class="k">end</span>
 <span class="k">end</span></code></pre></figure>
-</div>
-  
-   <div>
+
+    <div>
     <br><br><br>
 </div>
-<footer class="py-3 bg-dark fixed-bottom">
+<footer class="py-3 bg-dark">
     <div class="container">
         <p class="m-0 text-center text-white">Copyright &copy; 2020 Wakes</p>
     </div>
 </footer>
+   
   </body>
+  
 </html>
