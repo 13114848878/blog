@@ -17,11 +17,18 @@
      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
 
-    <script src="https://kit.fontawesome.com/3200007a33.js" crossorigin="anonymous"></script>
+    {% comment %} <script src="https://kit.fontawesome.com/3200007a33.js" crossorigin="anonymous"></script> {% endcomment %}
 
     {% comment %} 支持公式 {% endcomment %}
-    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
-    <script crossorigin="anonymous" integrity="sha384-qhat1oXtZBrErepVTT82sgJCfHMH60rMQNspxypvKQgCYufanp8hkc3wLjrznYzX" src="https://lib.baomitu.com/mathjax/3.0.5/es5/a11y/assistive-mml.js"></script>
+    {% comment %} <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script> {% endcomment %}
+    {% comment %} <script crossorigin="anonymous" integrity="sha384-qhat1oXtZBrErepVTT82sgJCfHMH60rMQNspxypvKQgCYufanp8hkc3wLjrznYzX" src="//lib.baomitu.com/mathjax/3.0.5/es5/a11y/assistive-mml.js"></script> {% endcomment %}
+    {% comment %} <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script> {% endcomment %}
+    {% comment %} <script async src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_CHTML"></script> {% endcomment %}
+    <script src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    {% comment %} <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.0.5/es5/sre/mathmaps/en.min.js" type="text/javascript"></script> {% endcomment %}
+    {% comment %} <script crossorigin="anonymous" integrity="sha384-qhat1oXtZBrErepVTT82sgJCfHMH60rMQNspxypvKQgCYufanp8hkc3wLjrznYzX" src="https://lib.baomitu.com/mathjax/3.0.5/es5/a11y/assistive-mml.js"></script> {% endcomment %}
     <script type="text/x-mathjax-config">
       MathJax.Hub.Config({
         tex2jax: {
