@@ -3,19 +3,31 @@ layout: default
 title: blog
 ---
 <div class="container-fluid" id="blog">
-  <div class="row" >
-  {% comment %} 8???????2? {% endcomment %}
-    <div class="col-8 offset-2">
-      <h1>Latest Posts</h1>
-      <ul>
-        {% for post in site.posts %}
-          <li>
-            <h2><a href="{{site.baseurl}}{{ post.url }}">{{ post.date | date_to_long_string }}</a></h2>
+  <div class="row justify-content-center" >
+    <div class="col-6">
+      {% for post in site.posts %}
+        <div class="card mt-2">
+          {% comment %} <h5 class="card-header">Featured</h5> {% endcomment %}
+          <div class="card-body">
+            {% comment %} ?? {% endcomment %}
             <p>{{ post.excerpt }}</p>
-            {% comment %} <p>{{ post | sample }}</p> {% endcomment %}
-          </li>
-        {% endfor %}
-      </ul>
+
+            {% comment %} ????? {% endcomment %}
+            <div class="text-between">
+              {% comment %} display:block,?????????display:inline?????????? {% endcomment %}
+              <p>
+                <img class="svg" src="{{site.baseurl}}/assets/images/date.svg" width="30" class="card-img-top" alt="..." >
+                {{ post.date | date:"%b %-d, %Y" }}
+              </p>
+              <p>
+                <a href="{{site.baseurl}}{{ post.url }}" class="btn btn-primary">more</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+      {% comment %} <h1>Latest Posts</h1> {% endcomment %}
+    
     </div>
   </div>
 </div>

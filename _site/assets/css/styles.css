@@ -156,4 +156,6 @@ table tr:nth-child(2n) { background-color: #f6f8fa; }
 
 #Iconfont { background-color: #E94618; }
 
+.text-between { display: flex; justify-content: space-between; }
+
 /*# sourceMappingURL=styles.css.map */

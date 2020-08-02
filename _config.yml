@@ -29,6 +29,9 @@ kramdown:
   # input: GFM
   syntax_highlighter: rouge
   # html_to_native: true
+  # auto_ids: false
+  # syntax_highlighter_opts:
+    # line_numbers: true # 可以显示行号，但是其他元素会受到影响
 
 ## Mathjax
 mathjax:  true
