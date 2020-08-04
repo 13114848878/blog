@@ -1,3 +1,4 @@
+// import "jsLearning";
 
 $(document).ready(function() {
     //为超链接加上target='_blank'属性
