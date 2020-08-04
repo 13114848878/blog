@@ -1,4 +1,6 @@
-I"@.
+I"P.<h3 id="测试jekyll渲染效果">测试jekyll渲染效果</h3>
+<p>使用马克飞象中的示例，测试Jekyll渲染的效果，检测是否所有markdown格式都支持。</p>
+
 <h1 id="欢迎使用马克飞象">欢迎使用马克飞象</h1>
 
 <p>@(示例笔记本)[马克飞象|帮助|Markdown]
@@ -46,12 +48,7 @@
 \[x = \dfrac{-b \pm \sqrt{b^2 - 4ac}}{2a}\]
 
 <h3 id="表格">表格</h3>
-<p><strong>表格必须换行重新开始写，否则渲染会处问题</strong>
-| Item      |    Value | Qty  |
-| :——– | ——–:| :–: |
-| Computer  | 1600 USD |  5   |
-| Phone     |   12 USD |  12  |
-| Pipe      |    1 USD | 234  |</p>
+<p><strong>表格必须换行重新开始写，否则渲染会处问题</strong></p>
 
 <table>
   <thead>

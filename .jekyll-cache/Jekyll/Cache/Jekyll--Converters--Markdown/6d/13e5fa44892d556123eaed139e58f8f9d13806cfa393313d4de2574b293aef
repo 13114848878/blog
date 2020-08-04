@@ -1,8 +1,10 @@
-I"�
+I"�
 <ul>
   <li><a href="#jekyll使用技巧">Jekyll使用技巧</a>
     <ul>
       <li><a href="#post-命名">post 命名</a></li>
+      <li><a href="#表格">表格</a></li>
+      <li><a href="#latex">Latex</a></li>
     </ul>
   </li>
 </ul>

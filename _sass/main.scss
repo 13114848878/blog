@@ -23,7 +23,6 @@ footer{
 
 
 // post.html
-
 #post{
   margin-top: 2em;
 }
@@ -64,4 +63,10 @@ table tr:nth-child(2n) {
 
 .back-to-top{
   padding-left: 5rem;
+}
+
+// 点击链接，打开新的页面
+a {
+  // href: ;
+  target: "_blank";
 }

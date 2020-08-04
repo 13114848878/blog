@@ -1,0 +1,23 @@
+I"@	<h3 id="jekyll使用技巧">Jekyll使用技巧</h3>
+<p>总结了使用Jekyll建站中遇到的问题和解决方法。</p>
+
+<h4 id="post-命名">post 命名</h4>
+<p>命名方式是<code class="language-plaintext highlighter-rouge">yyyy-mm-dd-name.md</code>，注意最好不要用中文来命名，在windows平台下会出现中文乱码现象。</p>
+
+<h4 id="表格">表格</h4>
+<p>表格书写时要与之前的内容<strong>空一行</strong>，否则会渲染失败。</p>
+
+<h4 id="latex">Latex</h4>
+<p>使用Mathjax来渲染Latex公式。一些教程中的CDN版本现在不支持了，可以换成国内的CDN。</p>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/x-mathjax-config"</span><span class="nt">&gt;</span>
+      <span class="nx">MathJax</span><span class="p">.</span><span class="nx">Hub</span><span class="p">.</span><span class="nx">Config</span><span class="p">({</span>
+        <span class="na">tex2jax</span><span class="p">:</span> <span class="p">{</span>
+          <span class="na">skipTags</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">script</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">noscript</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">style</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">textarea</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">pre</span><span class="dl">'</span><span class="p">],</span>
+          <span class="na">inlineMath</span><span class="p">:</span> <span class="p">[[</span><span class="dl">'</span><span class="s1">$</span><span class="dl">'</span><span class="p">,</span><span class="dl">'</span><span class="s1">$</span><span class="dl">'</span><span class="p">]]</span>
+        <span class="p">}</span>
+      <span class="p">});</span>
+    <span class="nt">&lt;/script&gt;</span>
+</code></pre></div></div>
+
+:ET

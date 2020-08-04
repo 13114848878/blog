@@ -18,6 +18,8 @@ table tr:nth-child(2n) { background-color: #f6f8fa; }
 
 .back-to-top { padding-left: 5rem; }
 
+a { target: "_blank"; }
+
 .highlight table td { padding: 5px; }
 
 .highlight table pre { margin: 0; }
