@@ -12,14 +12,22 @@
     <img src="{{site.baseurl}}/assets/images/logo1.png" width="40" height="40" class="align-center" alt="logo">
     我的博客
   </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
   
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       {% for item in site.data.navigation %}
-        <li class="nav-item">
-          <a class="nav-link" href="{{site.baseurl}}{{ item.link }}" >
-          {{item.name}} {% if page.url == item.link %}<span class="sr-only">(current)</span>{% endif %}</a>
-        </li>
+        {% if page.url == item.link %}
+          <li class="nav-item active" >
+            <a class="nav-link" href="{{site.baseurl}}{{ item.link }}" >{{item.name}} <span class="sr-only">(current)</span></a>
+          </li>
+        {% else %}
+          <li class="nav-item" >
+            <a class="nav-link" href="{{site.baseurl}}{{ item.link }}" >{{item.name}}</a>
+          </li>
+        {% endif %}
       {% endfor %}
 
       {% comment %} <li class="nav-item">
