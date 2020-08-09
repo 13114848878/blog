@@ -90,6 +90,7 @@ for (i=0; i<10; i++){
     }
 }
 
+// 返回对象的key，array也是对象
 for (n in student){
     console.log(n)
 }
@@ -97,3 +98,149 @@ for (n in student){
 for (i=0; num[i]; i++){
     console.log(num[i])
 }
+
+// 表单验证
+function validateForm(){
+    var x = document.forms['myForm']["password"].value;
+    alert(x)
+}
+
+// 异步
+setTimeout(function () {
+    console.log("1");
+}, 1000);
+console.log("2");
+
+//  promises
+// new Promise(function (resolve, reject) {
+//     setTimeout(function () {
+//         console.log("First");
+//         resolve();
+//     }, 1000);
+// }).then(function () {
+//     return new Promise(function (resolve, reject) {
+//         setTimeout(function () {
+//             console.log("Second");
+//             resolve();
+//         }, 4000);
+//     });
+// }).then(function () {
+//     setTimeout(function () {
+//         console.log("Third");
+//     }, 3000);
+// });
+
+
+// jQuery
+
+$(document).ready(function(){
+    $("#demo").hover(function(){
+        $(this).text("oOps");
+    });
+    
+    $("#demo").click(function(){
+        $(this).hide(1000);
+    });
+});
+
+// 需要等网页载入完成后才能引用，上面的代码有延时输出
+// document.getElementById('echart').style.height = "600px";
+// d.style.height = "600px";
+
+$(document).ready(function(){
+    $("[id^=echart]").css({"height":"400px","width":"100%"});
+});
+// style="width: 600px;height:400px;"
+
+// echart
+$(document).ready(function(){
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('echart'));
+    
+    // 指定图表的配置项和数据
+    var option = {
+        title: {
+            text: '第一个 ECharts 实例'
+        },
+        tooltip: {},
+        legend: {
+            data:['销量']
+        },
+        xAxis: {
+            data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
+        },
+        yAxis: {},
+        series: [{
+            name: '销量',
+            type: 'bar',
+            data: [5, 20, 36, 10, 10, 20]
+        }]
+    };
+
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+
+});
+
+
+// 数据动态更新
+data= [];
+dataX = [];
+T = 10; // second
+fs = 1000;
+n = T*fs;
+
+for (i=0; i<(n); i++){
+    data.push(Math.sin(2*Math.PI*1*i/fs));
+    dataX.push(i);
+}
+
+// console.log(data)
+function shiftArray(data, n){
+    // 把最后面的n个数转移到前面
+    for (i=0; i<n; i++){
+        data.unshift(data.pop());
+    }
+    return data
+}
+// data = shiftArray(data, 2);
+// console.log(data)
+
+$(document).ready(function(){
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('echart-online'), "dark");
+    option = {
+        xAxis: {
+            data: dataX
+        },
+        yAxis: {
+        },
+        series: [
+            {
+                name: "sin函数",
+                type:'line',
+                data: data
+            },
+        ],
+
+        title: {
+            text: "数据动态展示"
+        },
+
+        legend: {
+            // data: ["legend"]
+        }
+    };
+
+    setInterval(function () {
+        data = shiftArray(data, 100);
+        myChart.setOption({
+            series: [{
+                data: data
+            }]
+        });
+    }, 100);
+
+    myChart.setOption(option);
+    
+});
