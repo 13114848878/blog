@@ -208,7 +208,7 @@ function shiftArray(data, n){
 
 $(document).ready(function(){
     // 基于准备好的dom，初始化echarts实例
-    var myChart = echarts.init(document.getElementById('echart-online'), "dark");
+    myChart = echarts.init(document.getElementById('echart-online'), "dark");
     option = {
         xAxis: {
             data: dataX
@@ -217,14 +217,14 @@ $(document).ready(function(){
         },
         series: [
             {
-                name: "sin函数",
+                // name: "实时读取websocket的",
                 type:'line',
                 data: data
             },
         ],
 
         title: {
-            text: "数据动态展示"
+            text: "实时读取websocket的数据"
         },
 
         legend: {
@@ -232,15 +232,67 @@ $(document).ready(function(){
         }
     };
 
-    setInterval(function () {
-        data = shiftArray(data, 100);
-        myChart.setOption({
-            series: [{
-                data: data
-            }]
-        });
-    }, 100);
+    // setInterval(function () {
+    //     data = shiftArray(data, 100);
+    //     myChart.setOption({
+    //         series: [{
+    //             data: data
+    //         }]
+    //     });
+    // }, 100);
 
     myChart.setOption(option);
     
 });
+
+function string2array(stringArray){
+    var res =[];
+    // console.log(s[0]);
+    for (i in stringArray){
+        // console.log(stringArray[i]);
+        res.push(parseFloat(stringArray[i]));
+    };
+    return res
+}
+
+var  wsServer = 'ws://localhost:8888';
+var  websocket = new WebSocket(wsServer);
+websocket.onopen = function (evt) { onOpen(evt) };
+websocket.onclose = function (evt) { onClose(evt) };
+websocket.onmessage = function (evt) { onMessage(evt) };
+websocket.onerror = function (evt) { onError(evt) };
+function onOpen(evt) {
+console.log("Connected to WebSocket server.");
+}
+function onClose(evt) {
+console.log("Disconnected");
+}
+function onMessage(evt) {
+    if (typeof(evt.data) === "string"){
+        // console.log('Retrieved data from server: ' + evt.data);
+        s = evt.data.split(",");
+        // console.log(s.length);
+        data = string2array(s);
+        myChart.setOption({
+            xAxis: {
+                data: dataX.slice(0, data.length)
+            },
+            series: [{
+                data: data
+            }]
+        });
+        // console.log(data[0]);
+        // console.log(data[999]);
+    }
+    // console.log(evt.data)
+    // if(event.data instanceof ArrayBuffer){
+    //     var buffer = event.data;
+    //     console.log("Received arraybuffer");
+    //     console.log(buffer)
+    //   }
+
+}
+function onError(evt) {
+console.log('Error occured: ' + evt.data);
+}
+
