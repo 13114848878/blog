@@ -15,6 +15,16 @@ layout: default
           <div id="echart-online">
             {% comment %} <p>111</p> {% endcomment %}
           </div>
+            
+          <div class="form-group">
+            <label for="exampleInputEmail1">IP</label>
+            <input type="text" class="form-control" id="IP" aria-describedby="emailHelp">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">port</label>
+            <input type="text" class="form-control" id="port" name="password">
+          </div>
+          <button type="submit" class="btn btn-primary" onclick="setWsConfig()">open</button>
         </div>
         
         <div class="card mt-2">

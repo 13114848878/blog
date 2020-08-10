@@ -255,12 +255,13 @@ function string2array(stringArray){
     return res
 }
 
-var  wsServer = 'ws://220.168.186.71:8888';
-var  websocket = new WebSocket(wsServer);
-websocket.onopen = function (evt) { onOpen(evt) };
-websocket.onclose = function (evt) { onClose(evt) };
-websocket.onmessage = function (evt) { onMessage(evt) };
-websocket.onerror = function (evt) { onError(evt) };
+// var  wsServer = 'ws://localhost:8888';
+// var  websocket = new WebSocket(wsServer);
+// websocket.onopen = function (evt) { onOpen(evt) };
+// websocket.onclose = function (evt) { onClose(evt) };
+// websocket.onmessage = function (evt) { onMessage(evt) };
+// websocket.onerror = function (evt) { onError(evt) };
+
 function onOpen(evt) {
 console.log("Connected to WebSocket server.");
 }
@@ -296,3 +297,17 @@ function onError(evt) {
 console.log('Error occured: ' + evt.data);
 }
 
+function setWsConfig(){
+    $(document).ready(function(){
+        IP = $("#IP").val();
+        port = $("#port").val();
+        var  wsServer = 'ws://'+IP+':'+port;
+        var  websocket = new WebSocket(wsServer);
+        websocket.onopen = function (evt) { onOpen(evt) };
+        websocket.onclose = function (evt) { onClose(evt) };
+        websocket.onmessage = function (evt) { onMessage(evt) };
+        websocket.onerror = function (evt) { onError(evt) };
+        // console.log(IP);
+        // console.log(port);
+    });
+}
