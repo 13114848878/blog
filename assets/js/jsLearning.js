@@ -255,7 +255,7 @@ function string2array(stringArray){
     return res
 }
 
-var  wsServer = 'ws://220.168.186.71:8888';
+var  wsServer = 'ws://192.168.43.126:8888';
 var  websocket = new WebSocket(wsServer);
 websocket.onopen = function (evt) { onOpen(evt) };
 websocket.onclose = function (evt) { onClose(evt) };
