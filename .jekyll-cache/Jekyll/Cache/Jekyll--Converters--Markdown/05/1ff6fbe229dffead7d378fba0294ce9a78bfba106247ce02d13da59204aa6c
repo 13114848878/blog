@@ -1,0 +1,140 @@
+I"sE<h3 id="数据从串口到网页">数据从串口到网页</h3>
+<p>通过串口实时读取的数据，通过网页进行数据的展示。</p>
+
+<h3 id="websocket-方法">websocket 方法</h3>
+<p>通过 python、node.js 等读取串口的数据，将数据通过 websocket 传输给网页（通过 Javascript 接收），并实时显示。
+我由于之前用 matlab 写了串口读取的程序，就直接用 matlab 来做服务器了。有大佬写了 <a href="https://github.com/jebej/MatlabWebSocket">matlabWebSocket</a> ，你可以从 github 上下载 clone ，如果你觉得太慢的话，我已经把该<a href="https://gitee.com/Wakes_T/MatlabWebSocket">项目</a>转移到了码云，同样方法进行clone。安装方式详见项目说明。</p>
+
+<h4 id="代码">代码</h4>
+<p>假设你已经得到了从串口读取的数据，经过转换得到了一个<code class="language-plaintext highlighter-rouge">1*1000</code>的向量，现在将这1000个数字传输到网页进行显示。基本的思想是将数字转换成字符（也可以使用二进制字节进行传输，后一种方法在Javascript上转换比较麻烦，我就不用了）。</p>
+
+<p><strong>1、开启服务器</strong>
+在matlab中输入一下代码，打开服务器端口8888。</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">%</span> <span class="n">模拟串口数据</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">rand</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">1000</span><span class="o">);</span>
+<span class="o">%</span> <span class="n">数字转成字符</span><span class="err">，</span><span class="n">格式是以逗号分隔</span><span class="err">'</span><span class="mf">0.55555</span><span class="o">,</span><span class="mf">0.66666</span><span class="o">,</span><span class="err">'</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">num2str</span><span class="o">(</span><span class="n">a</span><span class="o">,</span> <span class="err">'</span><span class="o">%</span><span class="mf">3.5f</span><span class="o">,</span><span class="err">'</span><span class="o">);</span>
+<span class="o">%</span> <span class="n">打开8888端口</span>
+<span class="n">server</span> <span class="o">=</span> <span class="nc">EchoServer</span><span class="o">(</span><span class="mi">8888</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p><strong>2、开启客户端</strong>
+我使用echart来呈现数据，依赖jQuery和bootstrap，在网页中html的代码为：</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card mt-2"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"echart-online"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"exampleInputEmail1"</span><span class="nt">&gt;</span>IP<span class="nt">&lt;/label&gt;</span>
+        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">id=</span><span class="s">"IP"</span> <span class="na">aria-describedby=</span><span class="s">"emailHelp"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"exampleInputPassword1"</span><span class="nt">&gt;</span>port<span class="nt">&lt;/label&gt;</span>
+        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">id=</span><span class="s">"port"</span> <span class="na">name=</span><span class="s">"password"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span> <span class="na">onclick=</span><span class="s">"setWsConfig()"</span><span class="nt">&gt;</span>open<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<p>js代码为：</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">data</span><span class="o">=</span> <span class="p">[];</span>
+<span class="nx">dataX</span> <span class="o">=</span> <span class="p">[];</span>
+<span class="nx">T</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="c1">// second</span>
+<span class="nx">fs</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">;</span>
+<span class="nx">n</span> <span class="o">=</span> <span class="nx">T</span><span class="o">*</span><span class="nx">fs</span><span class="p">;</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="p">(</span><span class="nx">n</span><span class="p">);</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+    <span class="nx">data</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span><span class="o">*</span><span class="mi">1</span><span class="o">*</span><span class="nx">i</span><span class="o">/</span><span class="nx">fs</span><span class="p">));</span>
+    <span class="nx">dataX</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">i</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+    <span class="c1">// 基于准备好的dom，初始化echarts实例</span>
+    <span class="nx">myChart</span> <span class="o">=</span> <span class="nx">echarts</span><span class="p">.</span><span class="nx">init</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">echart-online</span><span class="dl">'</span><span class="p">),</span> <span class="dl">"</span><span class="s2">dark</span><span class="dl">"</span><span class="p">);</span>
+    <span class="nx">option</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="na">xAxis</span><span class="p">:</span> <span class="p">{</span>
+            <span class="na">data</span><span class="p">:</span> <span class="nx">dataX</span>
+        <span class="p">},</span>
+        <span class="na">yAxis</span><span class="p">:</span> <span class="p">{</span>
+        <span class="p">},</span>
+        <span class="na">series</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="c1">// name: "实时读取websocket的",</span>
+                <span class="na">type</span><span class="p">:</span><span class="dl">'</span><span class="s1">line</span><span class="dl">'</span><span class="p">,</span>
+                <span class="na">data</span><span class="p">:</span> <span class="nx">data</span>
+            <span class="p">},</span>
+        <span class="p">],</span>
+
+        <span class="na">title</span><span class="p">:</span> <span class="p">{</span>
+            <span class="na">text</span><span class="p">:</span> <span class="dl">"</span><span class="s2">实时读取websocket的数据</span><span class="dl">"</span>
+        <span class="p">},</span>
+
+    <span class="p">};</span>
+    <span class="nx">myChart</span><span class="p">.</span><span class="nx">setOption</span><span class="p">(</span><span class="nx">option</span><span class="p">);</span>
+    
+<span class="p">});</span>
+
+<span class="kd">function</span> <span class="nx">string2array</span><span class="p">(</span><span class="nx">stringArray</span><span class="p">){</span>
+    <span class="c1">// 字符串数组转换成数字数组</span>
+    <span class="kd">var</span> <span class="nx">res</span> <span class="o">=</span><span class="p">[];</span>
+    <span class="k">for</span> <span class="p">(</span><span class="nx">i</span> <span class="k">in</span> <span class="nx">stringArray</span><span class="p">){</span>
+        <span class="nx">res</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nb">parseFloat</span><span class="p">(</span><span class="nx">stringArray</span><span class="p">[</span><span class="nx">i</span><span class="p">]));</span>
+    <span class="p">};</span>
+    <span class="k">return</span> <span class="nx">res</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">onOpen</span><span class="p">(</span><span class="nx">evt</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Connected to WebSocket server.</span><span class="dl">"</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="kd">function</span> <span class="nx">onClose</span><span class="p">(</span><span class="nx">evt</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Disconnected</span><span class="dl">"</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="kd">function</span> <span class="nx">onMessage</span><span class="p">(</span><span class="nx">evt</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span><span class="p">(</span><span class="nx">evt</span><span class="p">.</span><span class="nx">data</span><span class="p">)</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">string</span><span class="dl">"</span><span class="p">){</span>
+        <span class="c1">// console.log('Retrieved data from server: ' + evt.data);</span>
+        <span class="nx">s</span> <span class="o">=</span> <span class="nx">evt</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="dl">"</span><span class="s2">,</span><span class="dl">"</span><span class="p">);</span>
+        <span class="c1">// console.log(s.length);</span>
+        <span class="nx">data</span> <span class="o">=</span> <span class="nx">string2array</span><span class="p">(</span><span class="nx">s</span><span class="p">);</span>
+        <span class="nx">myChart</span><span class="p">.</span><span class="nx">setOption</span><span class="p">({</span>
+            <span class="na">xAxis</span><span class="p">:</span> <span class="p">{</span>
+                <span class="na">data</span><span class="p">:</span> <span class="nx">dataX</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nx">data</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span>
+            <span class="p">},</span>
+            <span class="na">series</span><span class="p">:</span> <span class="p">[{</span>
+                <span class="na">data</span><span class="p">:</span> <span class="nx">data</span>
+            <span class="p">}]</span>
+        <span class="p">});</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">function</span> <span class="nx">onError</span><span class="p">(</span><span class="nx">evt</span><span class="p">)</span> <span class="p">{</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Error occured: </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">evt</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">setWsConfig</span><span class="p">(){</span>
+    <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+        <span class="nx">IP</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">#IP</span><span class="dl">"</span><span class="p">).</span><span class="nx">val</span><span class="p">();</span>
+        <span class="nx">port</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">#port</span><span class="dl">"</span><span class="p">).</span><span class="nx">val</span><span class="p">();</span>
+        <span class="kd">var</span>  <span class="nx">wsServer</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">ws://</span><span class="dl">'</span><span class="o">+</span><span class="nx">IP</span><span class="o">+</span><span class="dl">'</span><span class="s1">:</span><span class="dl">'</span><span class="o">+</span><span class="nx">port</span><span class="p">;</span>
+        <span class="kd">var</span>  <span class="nx">websocket</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WebSocket</span><span class="p">(</span><span class="nx">wsServer</span><span class="p">);</span>
+        <span class="nx">websocket</span><span class="p">.</span><span class="nx">onopen</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">evt</span><span class="p">)</span> <span class="p">{</span> <span class="nx">onOpen</span><span class="p">(</span><span class="nx">evt</span><span class="p">)</span> <span class="p">};</span>
+        <span class="nx">websocket</span><span class="p">.</span><span class="nx">onclose</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">evt</span><span class="p">)</span> <span class="p">{</span> <span class="nx">onClose</span><span class="p">(</span><span class="nx">evt</span><span class="p">)</span> <span class="p">};</span>
+        <span class="nx">websocket</span><span class="p">.</span><span class="nx">onmessage</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">evt</span><span class="p">)</span> <span class="p">{</span> <span class="nx">onMessage</span><span class="p">(</span><span class="nx">evt</span><span class="p">)</span> <span class="p">};</span>
+        <span class="nx">websocket</span><span class="p">.</span><span class="nx">onerror</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">evt</span><span class="p">)</span> <span class="p">{</span> <span class="nx">onError</span><span class="p">(</span><span class="nx">evt</span><span class="p">)</span> <span class="p">};</span>
+        <span class="c1">// console.log(IP);</span>
+        <span class="c1">// console.log(port);</span>
+    <span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>最终在网页中的显示结果如下图所示，你可以在IP一行添加你电脑的IP，例如<code class="language-plaintext highlighter-rouge">192.168.1.1</code>；在端口一栏添加<code class="language-plaintext highlighter-rouge">8888</code>，与你的服务器端的端口一致；最后点击open即可连接，此时你的matlab中应该会显示。
+<img src="https://s1.ax1x.com/2020/08/11/aXNdJO.png" alt="aXNdJO.png" /></p>
+
+<p><strong>3、传输数据</strong>
+当连接建立以后，可以通过服务器向客户端传输数据。具体代码为</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">clientCode</span> <span class="o">=</span> <span class="n">server</span><span class="o">.</span><span class="na">Connections</span><span class="o">(</span><span class="mi">1</span><span class="o">).</span><span class="na">HashCode</span><span class="o">;</span>
+<span class="n">server</span><span class="o">.</span><span class="na">sendTo</span><span class="o">(</span><span class="n">clientCode</span><span class="o">,</span> <span class="n">b</span><span class="o">(</span><span class="mi">1</span><span class="o">:</span><span class="n">end</span><span class="o">-</span><span class="mi">1</span><span class="o">));</span>
+</code></pre></div></div>
+<p>此时页面的数据应该已经产生了变化。
+<strong>提示：</strong></p>
+
+:ET
