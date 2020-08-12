@@ -18,7 +18,9 @@ table tr:nth-child(2n) { background-color: #f6f8fa; }
 
 .back-to-top { padding-left: 5rem; }
 
-a { target: "_blank"; }
+#index { height: 100vh; }
+
+#index a { margin-left: 5em; margin-right: 5em; }
 
 .highlight table td { padding: 5px; }
 

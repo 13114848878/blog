@@ -2,8 +2,8 @@
 #   link: /
 - name: 博客
   link: /blog.html
-- name: 关于
-  link: /about.html
+# - name: 关于
+#   link: /about.html
 - name: 资源站
   link: /source.html
 - name: js练习
