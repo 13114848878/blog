@@ -1,0 +1,15 @@
+I"
+<ul>
+  <li><a href="#数据从串口到网页">数据从串口到网页</a></li>
+  <li><a href="#websocket-方法">websocket 方法</a>
+    <ul>
+      <li><a href="#具体过程">具体过程</a></li>
+      <li><a href="#1开启服务器">1、开启服务器</a></li>
+      <li><a href="#2开启客户端">2、开启客户端</a></li>
+      <li><a href="#3传输数据">3、传输数据</a></li>
+      <li><a href="#数据下载">数据下载</a></li>
+    </ul>
+  </li>
+  <li><a href="#其他方法">其他方法</a></li>
+</ul>
+:ET

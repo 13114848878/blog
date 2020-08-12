@@ -185,8 +185,9 @@ $(document).ready(function(){
 
 // 数据动态更新
 data= [];
+rawData = []; // 用于存储全部数据
 dataX = [];
-T = 10; // second
+T = 2; // second
 fs = 1000;
 n = T*fs;
 
@@ -274,6 +275,13 @@ function onMessage(evt) {
         s = evt.data.split(",");
         // console.log(s.length);
         data = string2array(s);
+        rawData = rawData.concat(data);
+        if ( rawData.length > n ){
+            data = rawData.slice(rawData.length-n-1, rawData.length);
+        }else{
+            data = rawData;
+        }
+        // 更新数据
         myChart.setOption({
             xAxis: {
                 data: dataX.slice(0, data.length)
@@ -282,6 +290,7 @@ function onMessage(evt) {
                 data: data
             }]
         });
+        
         // console.log(data[0]);
         // console.log(data[999]);
     }
@@ -297,6 +306,7 @@ function onError(evt) {
 console.log('Error occured: ' + evt.data);
 }
 
+// 开始websocket连接
 function setWsConfig(){
     $(document).ready(function(){
         IP = $("#IP").val();
@@ -311,3 +321,31 @@ function setWsConfig(){
         // console.log(port);
     });
 }
+
+
+// 数据下载
+function download(filename, content) {
+    var blob = new Blob([content], {type: 'text/plain'});
+    var url = window.URL.createObjectURL(blob);
+    var a = document.createElement('a');
+
+    a.style = "display: none";
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+
+    setTimeout(function () {
+        document.body.removeChild(a);
+        window.URL.revokeObjectURL(url);
+    }, 5);
+}
+
+$(document).ready(function(){
+    $("#down").click(function () {
+        var filename = "rawData.txt";
+        var content = rawData;
+        download(filename, content);
+    });
+});
+

@@ -160,4 +160,6 @@ a { target: "_blank"; }
 
 .text-between { display: flex; justify-content: space-between; }
 
+[class*=highlight] { border-radius: 8px; }
+
 /*# sourceMappingURL=styles.css.map */
