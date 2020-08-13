@@ -1,8 +1,23 @@
 <div>
-    <br><br><br>
+
+    {% comment %} <br>
+    <br>
+    <br> {% endcomment %}
 </div>
-<footer class="py-3 bg-dark">
-    <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; 2020 Wakes</p>
-    </div>
+<div id="foot">
+    {% comment %} 占位 {% endcomment %}
+</div>
+<footer class="py-3 bg-dark text-center">
+    {% comment %} <div class="container"> {% endcomment %}
+    <p class="m-0 text-center text-white">Copyright &copy; 2020 Wakes</p>
+    
+    <a href={{site.gitee}}>
+        <img id="site-logo" class="svg" src="{{site.baseurl}}/assets/images/gitee.svg" class="card-img-top" alt="..." >
+    </a>
+
+    <a href={{site.github}}>
+        <img id="site-logo" class="svg" src="{{site.baseurl}}/assets/images/github.svg" class="card-img-top" alt="..." >
+    </a>
+
+    {% comment %} </div> {% endcomment %}
 </footer>

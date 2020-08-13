@@ -18,9 +18,15 @@ table tr:nth-child(2n) { background-color: #f6f8fa; }
 
 .back-to-top { padding-left: 5rem; }
 
-#index { height: 100vh; }
+#index { height: 100vh; background-image: url(../images/bg.jpg); background-size: 100% 100%; }
 
-#index a { margin-left: 5em; margin-right: 5em; }
+#foot { height: 60px; }
+
+footer p { display: inline; }
+
+footer a { display: inline; }
+
+#site-logo { height: 30px; margin-left: 2em; }
 
 .highlight table td { padding: 5px; }
 
@@ -163,5 +169,9 @@ table tr:nth-child(2n) { background-color: #f6f8fa; }
 .text-between { display: flex; justify-content: space-between; }
 
 [class*=highlight] { border-radius: 8px; }
+
+#blog { margin-bottom: 10px; }
+
+#blog .card { box-shadow: 10px 10px 5px #888888; }
 
 /*# sourceMappingURL=styles.css.map */

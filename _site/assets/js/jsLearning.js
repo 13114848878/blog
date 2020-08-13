@@ -148,7 +148,8 @@ $(document).ready(function(){
 // d.style.height = "600px";
 
 $(document).ready(function(){
-    $("[id^=echart]").css({"height":"400px","width":"100%"});
+    // start with 'echart'
+    $("[id^=echart]").css({"height":"400px"});
 });
 // style="width: 600px;height:400px;"
 

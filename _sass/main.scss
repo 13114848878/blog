@@ -74,10 +74,39 @@ table tr:nth-child(2n) {
 #index {
  
   height: 100vh;
-  
+  background-image: url(../images/bg.jpg);
+  background-size:100% 100%;
  }
 
-#index a{
-  margin-left: 5em;
-  margin-right: 5em;
+// #index a{
+//   margin-left: 5em;
+//   margin-right: 5em;
+// }
+
+// #index img{
+//   border-radius: 110px;
+//   height: 150px;
+// }
+
+// #index img:hover{
+//   transform: scale(1.01);
+//   box-shadow: 10px 10px 5px #888888;
+// }
+
+// footer 占位防止遮挡
+#foot{
+  height: 60px;
+}
+footer p {
+  display: inline;
+}
+footer a {
+  display: inline;
+}
+
+
+#site-logo{
+  height: 30px;
+  // margin-right: 2em;
+  margin-left: 2em;
 }

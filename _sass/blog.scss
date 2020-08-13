@@ -5,9 +5,19 @@
     justify-content: space-between;
 }
 
-// .text-between
+// post.html
 [class*=highlight]{
     // border-color: #000000;
     // border:1px solid;
     border-radius:8px;
 }
+#blog{
+    margin-bottom: 10px;
+}
+#blog .card{
+    // transform: scale(1.01);
+    box-shadow: 10px 10px 5px #888888;
+}
+// #blog .card:hover{
+//     border-color: #333388;
+// }
