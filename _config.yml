@@ -6,7 +6,7 @@ github: https://github.com/13114848878
 
 
 baseurl: /blog
-url: http://wakes_t.gitee.io/blog
+url: http://wakes_t.gitee.io
 
 collections:
   authors:
