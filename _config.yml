@@ -49,3 +49,4 @@ mathjax_autoNumber: true
 plugins:
   - jekyll-toc
   - jekyll-sitemap
+  - jekyll-seo-tag
