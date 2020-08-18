@@ -28,6 +28,12 @@ footer a { display: inline; }
 
 #site-logo { height: 30px; margin-left: 2em; }
 
+#eye-out { display: inline-block; }
+
+#eye { background-color: #555555; width: 80px; height: 40px; display: flex; justify-content: center; align-items: center; border-radius: 100%/100%; }
+
+#eye-ball { height: 30px; width: 30px; background-color: #000000; border-radius: 80%; }
+
 .highlight table td { padding: 5px; }
 
 .highlight table pre { margin: 0; }

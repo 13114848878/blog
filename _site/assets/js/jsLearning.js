@@ -350,3 +350,46 @@ $(document).ready(function(){
     });
 });
 
+
+// 控制眨眼
+function closed(){
+    $(document).ready(function(){
+        // $('#eyelid-top').animate({top:"25%"}, 'slow');
+        $('#eye').animate({height:"2px"}, 'slow');
+        // $('[id^=eye]').animate({height:"2px"}, 'slow');
+        // $('#eye').animate({}, function(){
+        //     $('[id^=eye]').css({height:"2px"});
+        //     $("#eye-out").css({'transform':'rotate(0deg)','margin-left':"0px"});
+        // });
+    });
+}
+
+function open(){
+    $(document).ready(function(){
+        // $('#eyelid-top').animate({top:"-20%"}, 'slow')
+        $('#eye').animate({height:"50px"}, 'slow');
+        // $('#eye').animate({}, function(){
+        //     $("#eye-out").css({'transform':'rotate(45deg)', 'margin-left':"20px"});
+        //     $('#eye').css({height:"50px"});
+        //     $('#eye-ball').css({height:"30px"});
+        // });
+    });
+}
+
+
+function blink(){
+    closed();
+    // setTimeout(function(){
+    //     var a=1;
+    // }, 1000);
+    open();
+}
+
+$(document).ready(function(){
+    $('#eye').click(blink);
+});
+
+// $(document).ready(function(){
+//     $('#eye').click(open)
+// });
+// setInterval(blink, 1000);
