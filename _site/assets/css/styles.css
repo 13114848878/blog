@@ -28,11 +28,13 @@ footer a { display: inline; }
 
 #site-logo { height: 30px; margin-left: 2em; }
 
-#eye-out { display: inline-block; }
+#card-eye { min-height: 100px; }
 
-#eye { background-color: #555555; width: 80px; height: 40px; display: flex; justify-content: center; align-items: center; border-radius: 100%/100%; }
+#out-eye { position: absolute; bottom: 0; display: inline-block; }
 
-#eye-ball { height: 30px; width: 30px; background-color: #000000; border-radius: 80%; }
+#eye { background-color: #555555; width: 80px; height: 40px; display: flex; justify-content: center; align-items: center; border-radius: 50%/50%; }
+
+#eye-ball { height: 30px; width: 30px; background-color: #000000; border-radius: 50%; }
 
 .highlight table td { padding: 5px; }
 

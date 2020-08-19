@@ -111,19 +111,18 @@ footer a {
   margin-left: 2em;
 }
 
-#eye-out {
+// 画一个眼睛
+#card-eye{
+  min-height: 100px;
+}
+#out-eye {
+  // 固定在底部，是眨眼看起来是从上向下眨眼
+  position:absolute;
+  bottom:0;
   display: inline-block;
-   // position: relative;
-  //  -webkit-transform: rotate(45deg);
-  //  -ms-transform: rotate(45deg);
-  //  -o-transform: rotate(45deg);
-  //  transform: rotate(45deg);
-  // -webkit-transform: skewX(15deg);
-  // transform: skewX(15deg);
-  // border-color: 2px solid #845A33;
 }
 
-// 实现点击闭眼，睁眼和眨眼
+// 画眼白
 #eye {
   background-color: #555555;
   width: 80px;
@@ -133,59 +132,18 @@ footer a {
   justify-content: center; 
   align-items: center;
   // border-radius: 100% 0;
-  border-radius: 100% / 100%
+  border-radius: 50% / 50%
   // position: relative;
   // animation: eyelid-blink-top 3s
 }
 
+// 画黑眼仁
 #eye-ball{
   
   height: 30px;
   width: 30px;
   background-color: #000000;
-  // // 画一个眼球
-  border-radius: 80%;
-  // -webkit-transform: rotate(45deg);
-  // -ms-transform: rotate(45deg);
-  // -o-transform: rotate(45deg);
-  // transform: rotate(45deg);
-  // // opacity: 1
-  
-  // border-top-right-radius: 50%;
+  // 画一个眼球
+  border-radius: 50%;
 }
-
-
-// #eyelid-top {
-//   left: 0;
-//   width: 100px;
-//   position: absolute;
-//   top: -20%;
-//   height: 45px;
-//   // border-bottom: 2px solid #845A33;
-//   // border-radius: 50% 50% 0 0;
-//   background-color: #ffffff;
-//   // -webkit-transform: rotate(-45deg);
-//   // -ms-transform: rotate(-45deg);
-//   // -o-transform: rotate(-45deg);
-//   // transform: rotate(-45deg);
-  
-// }
-// // #left-eye:hover {
-// //   animation: eyelid-blink-top 3s;
-// // }
-// #eyelid-bottom {
-//   left: 0;
-//   width: 100px;
-//   position: absolute;
-//   bottom: -0%;
-//   height: 30px;
-//   background-color: #ffffff;
-//   // -webkit-transform: rotate(-45deg);
-//   // -ms-transform: rotate(-45deg);
-//   // -o-transform: rotate(-45deg);
-//   // transform: rotate(-45deg);
-//   // opacity: 1
-//   // border-radius: 0 0 50% 50%;
-// }
-
 

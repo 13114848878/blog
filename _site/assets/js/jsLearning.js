@@ -213,9 +213,23 @@ $(document).ready(function(){
     myChart = echarts.init(document.getElementById('echart-online'), "dark");
     option = {
         xAxis: {
-            data: dataX
+            data: dataX,
+            name: "Point",
+            nameLocation: "center",
+            nameTextStyle: {
+                // [上, 右, 下, 左]
+            padding: [20, 0, 0, 0]
+            }
+            
         },
         yAxis: {
+            name: "Amplitude(\μV)",
+            nameLocation: "center",
+
+            nameTextStyle: {
+                // [上, 右, 下, 左]
+            padding: [0, 0, 30, 0]
+            }
         },
         series: [
             {
@@ -226,7 +240,7 @@ $(document).ready(function(){
         ],
 
         title: {
-            text: "实时读取websocket的数据"
+            text: "实时展示数据"
         },
 
         legend: {
@@ -273,15 +287,32 @@ console.log("Disconnected");
 function onMessage(evt) {
     if (typeof(evt.data) === "string"){
         // console.log('Retrieved data from server: ' + evt.data);
-        s = evt.data.split(",");
-        // console.log(s.length);
-        data = string2array(s);
-        rawData = rawData.concat(data);
+        // using json format
+        backendData = JSON.parse(evt.data)
+        // // string array
+        // s = evt.data.split(",");
+        // // console.log(s.length);
+        // data = string2array(s);
+        // 脑电数据
+        rawData = rawData.concat(backendData.data);
+        // 判断眼睛的状态
+        if (backendData.eyeState == 1){
+            closed();
+        };
+        if (backendData.eyeState == 2){
+            open();
+        };
+        if (backendData.eyeState == 3){
+            blink();
+        };
+
+        // 展示最新的2000个数据点
         if ( rawData.length > n ){
             data = rawData.slice(rawData.length-n-1, rawData.length);
         }else{
             data = rawData;
         }
+
         // 更新数据
         myChart.setOption({
             xAxis: {
@@ -354,8 +385,9 @@ $(document).ready(function(){
 // 控制眨眼
 function closed(){
     $(document).ready(function(){
-        // $('#eyelid-top').animate({top:"25%"}, 'slow');
-        $('#eye').animate({height:"2px"}, 'slow');
+        
+        // fast: 200ms; slow: 600ms; defualt: 400ms;
+        $('[id^=eye]').animate({height:"2px"}, 'fast');
         // $('[id^=eye]').animate({height:"2px"}, 'slow');
         // $('#eye').animate({}, function(){
         //     $('[id^=eye]').css({height:"2px"});
@@ -367,7 +399,14 @@ function closed(){
 function open(){
     $(document).ready(function(){
         // $('#eyelid-top').animate({top:"-20%"}, 'slow')
-        $('#eye').animate({height:"50px"}, 'slow');
+        setTimeout(function(){
+            $('#eye').animate({height:"50px"}, 'fast');
+        }, 1)
+        setTimeout(function(){
+            $('#eye-ball').animate({height:"30px"}, 'fast');
+        }, 2)
+
+        // $('[id^=eye]').animate({height:"10000%"}, 'fast');
         // $('#eye').animate({}, function(){
         //     $("#eye-out").css({'transform':'rotate(45deg)', 'margin-left':"20px"});
         //     $('#eye').css({height:"50px"});
