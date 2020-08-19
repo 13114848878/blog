@@ -111,6 +111,11 @@ footer a {
   margin-left: 2em;
 }
 
+// 防止遮挡
+#js{
+  margin-bottom: 10px;
+}
+
 // 画一个眼睛
 #card-eye{
   min-height: 100px;

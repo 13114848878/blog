@@ -1,115 +1,115 @@
 // alert("woo")
 
-function myFunction()
-{
-    // \ 用于代码换行等价于matlab的...
-    // document.getElementById("demo").innerHTML="我的第一个 \
-    // JavaScript 函数";
-    document.getElementById("demo").innerHTML = Date();
-    document.getElementById("demo").style.color="red";
-    this.innerHTML = "time";
-}
+// function myFunction()
+// {
+//     // \ 用于代码换行等价于matlab的...
+//     // document.getElementById("demo").innerHTML="我的第一个 \
+//     // JavaScript 函数";
+//     document.getElementById("demo").innerHTML = Date();
+//     document.getElementById("demo").style.color="red";
+//     this.innerHTML = "time";
+// }
 
-a = 5;
-b = 6;
-console.log(a*b)
+// a = 5;
+// b = 6;
+// console.log(a*b)
 
-a = 16;
-b = "john";
+// a = 16;
+// b = "john";
 // 数字转换成字符串
-console.log(a+b)
-console.log(b+a)
+// console.log(a+b)
+// console.log(b+a)
 
 // array
-num = [1,2,3,4];
-console.log(num)
-num[2] = "string";
-console.log(num)
+// num = [1,2,3,4];
+// console.log(num)
+// num[2] = "string";
+// console.log(num)
 
 // object
-student = {
-    "name1":10,
-    "name2": "test",
-};
-console.log(student)
-console.log(student.name1)
-console.log(student["name2"])
+// student = {
+//     "name1":10,
+//     "name2": "test",
+// };
+// console.log(student)
+// console.log(student.name1)
+// console.log(student["name2"])
 
 // function
-function myAdd(a,b){
-    return a + b
-}
-console.log(myAdd(1,2))
+// function myAdd(a,b){
+//     return a + b
+// }
+// console.log(myAdd(1,2))
 
 // global variable
-name = "name";
-// "name"
-console.log(name)
-function changeName(){
-    // local variable
-    var name1 = "name1";
-    name = "name1";
-}
-changeName()
-// "name1"
-console.log(name)
-// error，报错之后下面不执行
-// console.log(name1)
-window.name = "name2";
-// window.name
-console.log(name)
+// name = "name";
+// // "name"
+// console.log(name)
+// function changeName(){
+//     // local variable
+//     var name1 = "name1";
+//     name = "name1";
+// }
+// changeName()
+// // "name1"
+// console.log(name)
+// // error，报错之后下面不执行
+// // console.log(name1)
+// window.name = "name2";
+// // window.name
+// console.log(name)
 
 // string
-s1 = "string one";
-s2 = new String('string two');
-console.log(typeof(s1))
-console.log(typeof(s2))
+// s1 = "string one";
+// s2 = new String('string two');
+// console.log(typeof(s1))
+// console.log(typeof(s2))
 
 // operator
-x = 1;
-y = x--;
-z = --x;
-console.log(y,z)
-age = 20;
-voteable=(age<18)?"年龄太小":"年龄已达到";
-console.log(voteable)
+// x = 1;
+// y = x--;
+// z = --x;
+// console.log(y,z)
+// age = 20;
+// voteable=(age<18)?"年龄太小":"年龄已达到";
+// console.log(voteable)
 
-// 
-if (age<18){
-    voteable = "no ok";
-}
-else{
-    voteable = "ok";
-}
-console.log(voteable)
+// // 
+// if (age<18){
+//     voteable = "no ok";
+// }
+// else{
+//     voteable = "ok";
+// }
+// console.log(voteable)
 
 // for loop
-for (i=0; i<10; i++){
-    if (i>5){
-        console.log(i)
-    }
-}
+// for (i=0; i<10; i++){
+//     if (i>5){
+//         console.log(i)
+//     }
+// }
 
 // 返回对象的key，array也是对象
-for (n in student){
-    console.log(n)
-}
+// for (n in student){
+//     console.log(n)
+// }
 
-for (i=0; num[i]; i++){
-    console.log(num[i])
-}
+// for (i=0; num[i]; i++){
+//     console.log(num[i])
+// }
 
 // 表单验证
-function validateForm(){
-    var x = document.forms['myForm']["password"].value;
-    alert(x)
-}
+// function validateForm(){
+//     var x = document.forms['myForm']["password"].value;
+//     alert(x)
+// }
 
 // 异步
-setTimeout(function () {
-    console.log("1");
-}, 1000);
-console.log("2");
+// setTimeout(function () {
+//     console.log("1");
+// }, 1000);
+// console.log("2");
 
 //  promises
 // new Promise(function (resolve, reject) {
@@ -133,15 +133,15 @@ console.log("2");
 
 // jQuery
 
-$(document).ready(function(){
-    $("#demo").hover(function(){
-        $(this).text("oOps");
-    });
+// $(document).ready(function(){
+//     $("#demo").hover(function(){
+//         $(this).text("oOps");
+//     });
     
-    $("#demo").click(function(){
-        $(this).hide(1000);
-    });
-});
+//     $("#demo").click(function(){
+//         $(this).hide(1000);
+//     });
+// });
 
 // 需要等网页载入完成后才能引用，上面的代码有延时输出
 // document.getElementById('echart').style.height = "600px";
@@ -154,34 +154,34 @@ $(document).ready(function(){
 // style="width: 600px;height:400px;"
 
 // echart
-$(document).ready(function(){
-    // 基于准备好的dom，初始化echarts实例
-    var myChart = echarts.init(document.getElementById('echart'));
+// $(document).ready(function(){
+//     // 基于准备好的dom，初始化echarts实例
+//     var myChart = echarts.init(document.getElementById('echart'));
     
-    // 指定图表的配置项和数据
-    var option = {
-        title: {
-            text: '第一个 ECharts 实例'
-        },
-        tooltip: {},
-        legend: {
-            data:['销量']
-        },
-        xAxis: {
-            data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
-        },
-        yAxis: {},
-        series: [{
-            name: '销量',
-            type: 'bar',
-            data: [5, 20, 36, 10, 10, 20]
-        }]
-    };
+//     // 指定图表的配置项和数据
+//     var option = {
+//         title: {
+//             text: '第一个 ECharts 实例'
+//         },
+//         tooltip: {},
+//         legend: {
+//             data:['销量']
+//         },
+//         xAxis: {
+//             data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
+//         },
+//         yAxis: {},
+//         series: [{
+//             name: '销量',
+//             type: 'bar',
+//             data: [5, 20, 36, 10, 10, 20]
+//         }]
+//     };
 
-    // 使用刚指定的配置项和数据显示图表。
-    myChart.setOption(option);
+//     // 使用刚指定的配置项和数据显示图表。
+//     myChart.setOption(option);
 
-});
+// });
 
 
 // 数据动态更新

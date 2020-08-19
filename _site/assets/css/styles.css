@@ -28,6 +28,8 @@ footer a { display: inline; }
 
 #site-logo { height: 30px; margin-left: 2em; }
 
+#js { margin-bottom: 10px; }
+
 #card-eye { min-height: 100px; }
 
 #out-eye { position: absolute; bottom: 0; display: inline-block; }
