@@ -149,7 +149,7 @@
 
 $(document).ready(function(){
     // start with 'echart'
-    $("[id^=echart]").css({"height":"400px"});
+    $("[id^=echart]").css({"height":"400px", "min-width":"300px", "width":"600px"});
 });
 // style="width: 600px;height:400px;"
 
@@ -193,24 +193,50 @@ fs = 1000;
 n = T*fs;
 
 for (i=0; i<(n); i++){
-    data.push(Math.sin(2*Math.PI*1*i/fs));
+    data.push(10*Math.sin(2*Math.PI*1*i/fs));
     dataX.push(i);
 }
 
-// console.log(data)
+// console.log(Math.max(...data))
 function shiftArray(data, n){
     // 把最后面的n个数转移到前面
     for (i=0; i<n; i++){
         data.unshift(data.pop());
     }
     return data
-}
-// data = shiftArray(data, 2);
-// console.log(data)
+};
+
+
+yValue = 0;
+scale = 1.1;
+function addValue(){
+    // console.log(yValue);
+    yValue = Math.abs(yValue * scale).toFixed(3);
+    // console.log(yValue);
+    updateChart();
+};
+
+function minusValue(){
+    yValue = Math.abs(yValue / scale).toFixed(3);
+    updateChart();
+};
+
+// 按钮增加则增加数值，按钮减少则减少数值
+$(document).ready(function(){
+    $("#yValueAdd").click(addValue);
+    $("#yValueMinus").click(minusValue);
+    
+});
+
+// console.log(Math.max([0,1,2]));
 
 $(document).ready(function(){
     // 基于准备好的dom，初始化echarts实例
     myChart = echarts.init(document.getElementById('echart-online'), "dark");
+    var yMax = Math.round(Math.max(...data));
+    var yMin = Math.round(Math.min(...data));
+    yValue = Math.max(Math.abs(yMin), yMax);
+
     option = {
         xAxis: {
             data: dataX,
@@ -229,7 +255,10 @@ $(document).ready(function(){
             nameTextStyle: {
                 // [上, 右, 下, 左]
             padding: [0, 0, 30, 0]
-            }
+            },
+            // 坐标轴范围
+            min: -yValue,
+            max: +yValue,
         },
         series: [
             {
@@ -260,6 +289,26 @@ $(document).ready(function(){
     myChart.setOption(option);
     
 });
+// 更新echart图表
+function updateChart(){
+    $(document).ready(function(){
+        // 更新数据
+        myChart.setOption({
+            xAxis: {
+                data: dataX.slice(0, data.length)
+            },
+            yAxis: {
+                min: -yValue,
+                max: +yValue,
+            },
+            series: [{
+                data: data
+            }]
+        });
+    });
+};
+
+
 
 function string2array(stringArray){
     var res =[];
@@ -313,15 +362,7 @@ function onMessage(evt) {
             data = rawData;
         }
 
-        // 更新数据
-        myChart.setOption({
-            xAxis: {
-                data: dataX.slice(0, data.length)
-            },
-            series: [{
-                data: data
-            }]
-        });
+        updateChart();
         
         // console.log(data[0]);
         // console.log(data[999]);

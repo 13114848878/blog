@@ -20,10 +20,23 @@ layout: default
           </div>
         </div>
 
-        <div class="card mt-2">
-          <div id="echart-online">
-            {% comment %} 此处显示数据 {% endcomment %}
+
+        <div class="card mt-2" >
+          
+          <div id="chart">
+            <div id="yRange">
+              {% comment %} <ul class="count"> {% endcomment %}
+              {% comment %} <h6>y</h6> {% endcomment %}
+              <button type="button" class="btn btn-outline-secondary btn-sm" id="yValueAdd"><h4>+</h4></button>
+              {% comment %} <li><input type="text" class="input-num" id="input-num" value="0" /></li> {% endcomment %}
+              <button type="button" class="btn btn-outline-secondary btn-sm" id="yValueMinus"><h4>-</h4></button>
+              {% comment %} </ul> {% endcomment %}
+            </div>
+            <div id="echart-online">
+              {% comment %} 此处显示数据 {% endcomment %}
+            </div>
           </div>
+
           <div class="card-body">
             <div class="form-group">
               <label for="exampleInputEmail1">IP</label>

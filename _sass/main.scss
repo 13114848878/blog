@@ -152,3 +152,31 @@ footer a {
   border-radius: 50%;
 }
 
+
+// 坐标轴控制按钮
+#chart{
+  // display: inline-block;
+  display:flex;
+  float: left;
+//   justify-content: left;
+}
+#yRange{
+  width: 40px;
+  margin: 2px;
+  margin-top: 30px;
+}
+#yRange h6{
+  text-align: center;
+}
+#yRange button{
+  // list-style: none;
+  // display: flex;
+  // align-items: space-between;
+  // justify-content: space-between;
+  width: 40px;
+  height: 40px;
+  min-width: 10px;
+  margin-bottom: 10px;
+  text-justify: auto;
+
+}
