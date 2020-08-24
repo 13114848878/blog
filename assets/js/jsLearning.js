@@ -149,7 +149,7 @@
 
 $(document).ready(function(){
     // start with 'echart'
-    $("[id^=echart]").css({"height":"400px", "min-width":"300px", "width":"600px"});
+    $("[id^=echart]").css({"height":"400px", "min-width":"90%"});
 });
 // style="width: 600px;height:400px;"
 
